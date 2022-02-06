@@ -1,0 +1,37 @@
+{
+  "name": "bewith-dev-aws-ecs-task-definition-creator",
+  "version": "0.0.1",
+  "description": "Create AWS ECS task definition file",
+  "main": "src/main.js",
+  "scripts": {
+    "lint": "eslint src/**/*.ts",
+    "package": "ncc build src/index.js -o dist",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bewith-dev/aws-ecs-task-definition-creator.git"
+  },
+  "keywords": [
+    "With",
+    "bewith-dev",
+    "GitHub",
+    "Actions",
+    "JavaScript"
+  ],
+  "author": "With",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bewith-dev/aws-ecs-task-definition-creator/issues"
+  },
+  "homepage": "https://github.com/bewith-dev/aws-ecs-task-definition-creator#readme",
+  "dependencies": {
+    "@actions/core": "^1.6.0",
+    "tmp": "^0.2.1"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.33.1",
+    "eslint": "^8.6.0",
+    "jest": "^27.4.5"
+  }
+}

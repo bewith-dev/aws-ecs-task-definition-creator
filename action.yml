@@ -1,0 +1,52 @@
+name: 'Amazon ECS "Creator Task Definition" Action for GitHub Actions by With'
+description: 'Creating a new file Amazon ECS task definition JSON file.'
+branding:
+  icon: 'cloud'
+  color: 'orange'
+inputs:
+  container-name:
+    description: 'The name of the container defined in the containerDefinitions section of the ECS task definition'
+    required: true
+  image:
+    description: 'The URI of the container image to insert into the ECS task definition'
+    required: true
+  cpu:
+    description: 'The CPU units of the container to insert into the ECS task definition'
+    required: true
+  memory-reservation:
+    description: 'The Memory Reservation units of the container to insert into the ECS task definition'
+    required: true
+  environment-variables:
+    description: 'Variables to add to the container. Each variable is of the form KEY=value, you can specify multiple variables with multi-line YAML strings.'
+    required: false
+  environment-variables-files:
+    description: 'Variables files to add to the container. Each you can specify file with multi-line YAML strings.'
+    required: false
+  execution-role-arn:
+    description: 'execution-role-arn'
+    required: false
+  task-role-arn:
+    description: 'task-role-arn'
+    required: false
+  family:
+    description: 'task-role-arn'
+    required: false
+  port-mapping-tcp:
+    description: 'The port mapping tcp units of the container to insert into the ECS task definition Each port mapping is of the form containerPort=hostPort'
+    required: false
+  port-mapping-udp:
+    description: 'port-mapping-udp'
+    required: false
+  log-driver:
+    description: 'The log driver units of the container to insert into the ECS task definition'
+    required: false
+  log-driver-options:
+    description: 'The log driver options units of the container to insert into the ECS task definition Each option is of the form KEY=value'
+    required: false
+
+outputs:
+  task-definition:
+    description: 'The path to the rendered task definition file'
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
