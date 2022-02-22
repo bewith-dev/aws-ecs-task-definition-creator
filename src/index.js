@@ -17,6 +17,8 @@ export class TaskDefinition {
         }
     };
 
+    _runtimePlatform = null
+    _networkMode = null;
     _family = "";
     _taskRoleArn = "";
     _executionRoleArn = "";
@@ -40,6 +42,9 @@ export class TaskDefinition {
         this.containerPortMappingTcp = core.getInput('port-mapping-tcp', {required: false});
         this.containerPortMappingUdp = core.getInput('port-mapping-udp', {required: false});
 
+        this.containerLogDriverOptions = core.getInput('network-mode', {required: false});
+        this.runtimePlatform = core.getInput('runtime-platform-options', {required: false});
+
         /** Logs */
         this.containerLogDriver = core.getInput('log-driver', {required: false});
         this.containerLogDriverOptions = core.getInput('log-driver-options', {required: false});
@@ -61,6 +66,8 @@ export class TaskDefinition {
             family: this.family,
             taskRoleArn: this.taskRoleArn,
             executionRoleArn: this.executionRoleArn,
+            networkMode: this.networkMode,
+            runtimePlatform: this.runtimePlatform,
             volumes: [],
             placementConstraints: [],
         };
@@ -74,6 +81,13 @@ export class TaskDefinition {
         return this._container;
     }
 
+    get networkMode() {
+        return this._networkMode;
+    }
+
+    get runtimePlatform() {
+        return this._runtimePlatform;
+    }
 
     get taskRoleArn() {
         return this._taskRoleArn;
@@ -81,6 +95,10 @@ export class TaskDefinition {
 
     get executionRoleArn() {
         return this._executionRoleArn;
+    }
+
+    set networkMode(value) {
+        this._networkMode = value;
     }
 
     set taskRoleArn(value) {
@@ -183,6 +201,20 @@ export class TaskDefinition {
         });
 
         this._container.logConfiguration.options = optionsParsed;
+    }
+
+    set runtimePlatform(options) {
+        let optionsParsed = {};
+        options.split('\n').forEach((option) => {
+            const runtimePlatformOption = option.trim();
+            if (runtimePlatformOption.length === 0) {
+                return;
+            }
+            const runtimePlatformOptionSplit = runtimePlatformOption.split("=");
+            optionsParsed[runtimePlatformOptionSplit[0]] = runtimePlatformOptionSplit[1];
+        });
+
+        this._runtimePlatform = optionsParsed;
     }
 
     set containerPortMappingTcp(portMappingTcp) {

@@ -43,6 +43,12 @@ inputs:
   log-driver-options:
     description: 'The log driver options units of the container to insert into the ECS task definition Each option is of the form KEY=value'
     required: false
+  network-mode:
+    description: 'networkMode'
+    required: false
+  runtime-platform-options:
+    description: 'runtimePlatform object'
+    required: false
 
 outputs:
   task-definition:
