@@ -6283,7 +6283,7 @@ class TaskDefinition {
         this.containerPortMappingTcp = core.getInput('port-mapping-tcp', {required: false});
         this.containerPortMappingUdp = core.getInput('port-mapping-udp', {required: false});
 
-        this.containerLogDriverOptions = core.getInput('network-mode', {required: false});
+        this.networkMode = core.getInput('network-mode', {required: false});
         this.runtimePlatform = core.getInput('runtime-platform-options', {required: false});
 
         this.cpu = core.getInput('cpu', {required: false});
