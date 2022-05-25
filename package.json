@@ -26,12 +26,12 @@
   },
   "homepage": "https://github.com/bewith-dev/aws-ecs-task-definition-creator#readme",
   "dependencies": {
-    "@actions/core": "^1.6.0",
+    "@actions/core": "^1.8.2",
     "tmp": "^0.2.1"
   },
   "devDependencies": {
-    "@vercel/ncc": "^0.33.1",
-    "eslint": "^8.6.0",
-    "jest": "^27.4.5"
+    "@vercel/ncc": "^0.33.4",
+    "eslint": "^8.16.0",
+    "jest": "^28.1.0"
   }
 }
