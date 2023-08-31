@@ -72,10 +72,7 @@ export class TaskDefinition {
             taskRoleArn: this.taskRoleArn,
             executionRoleArn: this.executionRoleArn,
             networkMode: this.networkMode,
-            compatibilities: [
-                "FARGATE",
-                "EC2"
-            ],
+            requiresCompatibilities: ["FARGATE"],
             cpu: this.cpu,
             memory: this.memory,
             runtimePlatform: this.runtimePlatform,
