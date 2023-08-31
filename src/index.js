@@ -15,10 +15,6 @@ export class TaskDefinition {
             logDriver: "",
             options: {}
         },
-        compatibilities: [
-            "FARGATE",
-            "EC2"
-        ],
     };
 
     _cpu = 0
@@ -76,6 +72,10 @@ export class TaskDefinition {
             taskRoleArn: this.taskRoleArn,
             executionRoleArn: this.executionRoleArn,
             networkMode: this.networkMode,
+            compatibilities: [
+                "FARGATE",
+                "EC2"
+            ],
             cpu: this.cpu,
             memory: this.memory,
             runtimePlatform: this.runtimePlatform,
