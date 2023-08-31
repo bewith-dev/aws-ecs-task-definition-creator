@@ -14,7 +14,11 @@ export class TaskDefinition {
         logConfiguration: {
             logDriver: "",
             options: {}
-        }
+        },
+        compatibilities: [
+            "FARGATE",
+            "EC2"
+        ],
     };
 
     _cpu = 0
@@ -77,10 +81,6 @@ export class TaskDefinition {
             runtimePlatform: this.runtimePlatform,
             volumes: [],
             placementConstraints: [],
-            compatibilities: [
-                "EC2",
-                "FARGATE"
-            ],
         };
 
         const newTaskDefContents = JSON.stringify(taskDef, null, 2);
