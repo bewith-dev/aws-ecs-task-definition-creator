@@ -76,7 +76,6 @@ export class TaskDefinition {
             memory: this.memory,
             runtimePlatform: this.runtimePlatform,
             volumes: [],
-            compatibilities: ["FARGATE", "EC2"],
             placementConstraints: [],
         };
 
