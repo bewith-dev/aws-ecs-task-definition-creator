@@ -82,7 +82,6 @@ export class TaskDefinition {
 
         const newTaskDefContents = JSON.stringify(taskDef, null, 2);
         fs.writeFileSync(updatedTaskDefFile.name, newTaskDefContents);
-        console.log(`Updated task definition file: ${newTaskDefContents}`);
         core.setOutput('task-definition', updatedTaskDefFile.name);
     }
 
