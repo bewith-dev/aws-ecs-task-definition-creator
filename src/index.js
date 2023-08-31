@@ -76,11 +76,13 @@ export class TaskDefinition {
             memory: this.memory,
             runtimePlatform: this.runtimePlatform,
             volumes: [],
+            compatibilities: ["FARGATE", "EC2"],
             placementConstraints: [],
         };
 
         const newTaskDefContents = JSON.stringify(taskDef, null, 2);
         fs.writeFileSync(updatedTaskDefFile.name, newTaskDefContents);
+        console.log(`Updated task definition file: ${newTaskDefContents}`);
         core.setOutput('task-definition', updatedTaskDefFile.name);
     }
 
