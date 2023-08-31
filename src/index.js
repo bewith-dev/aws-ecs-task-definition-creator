@@ -77,6 +77,7 @@ export class TaskDefinition {
             runtimePlatform: this.runtimePlatform,
             volumes: [],
             placementConstraints: [],
+            requiresCompatibilities: ["EC2", "FARGATE"]
         };
 
         const newTaskDefContents = JSON.stringify(taskDef, null, 2);
