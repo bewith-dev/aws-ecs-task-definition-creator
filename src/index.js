@@ -24,6 +24,7 @@ export class TaskDefinition {
     _family = "";
     _taskRoleArn = "";
     _executionRoleArn = "";
+    _requiresCompatibilities = ["FARGATE", "EC2"];
 
     constructor() {
         this.containerName = core.getInput('container-name', {required: true});
@@ -77,7 +78,7 @@ export class TaskDefinition {
             runtimePlatform: this.runtimePlatform,
             volumes: [],
             placementConstraints: [],
-            requiresCompatibilities: ["FARGATE"],
+            requiresCompatibilities: this._requiresCompatibilities,
         };
 
         const newTaskDefContents = JSON.stringify(taskDef, null, 2);
