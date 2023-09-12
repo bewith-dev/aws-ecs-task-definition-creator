@@ -135,11 +135,11 @@ export class TaskDefinition {
     }
 
     set containerCpu(name) {
-        this._container.cpu = +name;
+        this._container.cpu = name;
     }
 
     set containerMemoryReservation(value) {
-        this._container.memoryReservation = +value;
+        this._container.memoryReservation = value;
     }
 
     set containerName(name) {
