@@ -56,7 +56,7 @@ export class TaskDefinition {
         this.containerLogDriverOptions = core.getInput('log-driver-options', {required: false});
     }
 
-    build() {
+    async build() {
         const updatedTaskDefFile = tmp.fileSync({
             tmpdir: process.env.RUNNER_TEMP,
             prefix: 'task-definition-',
@@ -82,7 +82,7 @@ export class TaskDefinition {
         };
 
         const newTaskDefContents = JSON.stringify(taskDef, null, 2);
-        fs.writeFileSync(updatedTaskDefFile.name, newTaskDefContents);
+        await fs.writeFileSync(updatedTaskDefFile.name, newTaskDefContents);
         core.setOutput('task-definition', updatedTaskDefFile.name);
     }
 
