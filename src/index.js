@@ -15,6 +15,7 @@ export class TaskDefinition {
             logDriver: "",
             options: {}
         },
+        command: []
     };
 
     _cpu = 0
@@ -54,6 +55,9 @@ export class TaskDefinition {
         /** Logs */
         this.containerLogDriver = core.getInput('log-driver', {required: false});
         this.containerLogDriverOptions = core.getInput('log-driver-options', {required: false});
+
+        /** Command */
+        this.containerCommand = core.getInput('container-command', {required: false});
     }
 
      build() {
@@ -262,7 +266,7 @@ export class TaskDefinition {
             const portsTrimmed = ports.trim();
             if (portsTrimmed.length === 0) {
                 return;
-            }
+            }``
             const portsSplit = portsTrimmed.split("=");
             this._container.portMappings.push({
                 containerPort: parseInt(portsSplit[0]),
@@ -270,6 +274,19 @@ export class TaskDefinition {
                 protocol: "udp"
             });
         });
+    }
+
+    set containerCommand(command) {
+        if (command) {
+            // Split the command string by spaces, respecting quoted strings
+            this._container.command = command.match(/(?:[^\s"]+|"[^"]*")+/g) || [];
+            // Remove quotes from the command arguments if they exist
+            this._container.command = this._container.command.map(arg => arg.replace(/^"(.*)"$/, '$1'));
+        }
+    }
+
+    get containerCommand() {
+        return this._container.command;
     }
 }
 
